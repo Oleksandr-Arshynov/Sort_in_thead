@@ -41,7 +41,7 @@ def process_folder(folder_path, destination_folder):
 
 if __name__ == "__main__":
     source_folder = "/Users/oleksandrarshinov/Desktop/Documents/Repository/Sort_in_thead/Garbage3" 
-    destination_folder = "/Users/oleksandrarshinov/Desktop/Documents/Repository/Sort_in_thead/SORTED"  
+    destination_folder = "/Users/oleksandrarshinov/Desktop/Documents/Repository/Sort_in_thead/venv/SORTED"  
 
     # створює папки для кожного унікального розширення файлів у вхідній папці source_folder.
     for ext in set(file.split('.')[-1].lower() for _, _, files in os.walk(source_folder) for file in files):
