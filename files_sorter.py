@@ -1,6 +1,8 @@
 import os
 import shutil
 from concurrent.futures import ThreadPoolExecutor
+from proces import factorize, synchronous_factorization, parallel_factorization
+import time
 """
 Ця програма призначена для сортування файлів у вказаній вихідній папці (`source_folder`)
 за їхніми розширеннями та переміщення їх у відповідні папки у папці призначення
@@ -50,3 +52,21 @@ if __name__ == "__main__":
     # Використання ThreadPoolExecutor для паралельної обробки кожної папки у вхідній папці. 
     with ThreadPoolExecutor() as executor:
         executor.submit(process_folder, source_folder, destination_folder)
+        
+    # Генеруємо список чисел для тестування
+    numbers_to_factorize = [128, 255, 99999, 10651060]
+
+    # Синхронна версія
+    start_time = time.time()
+    synchronous_results = synchronous_factorization(numbers_to_factorize)
+    end_time = time.time()
+    print(f"Synchronous execution time: {end_time - start_time} seconds")
+    print("Synchronous results:", synchronous_results)
+    print("", end="\n")
+
+    # Паралельна версія
+    start_time = time.time()
+    parallel_results = parallel_factorization(numbers_to_factorize)
+    end_time = time.time()
+    print(f"Parallel execution time: {end_time - start_time} seconds")
+    print("Parallel results:", parallel_results)
